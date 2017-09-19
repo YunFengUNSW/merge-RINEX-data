@@ -143,12 +143,15 @@ if __name__ == '__main__':
         print("marging...")
         os.system('teqc > ' + ' '.join(downloaded_files).replace('.gz', '') + ' > ' + save_file_name)
         os.remove(file_list_name)
-        for f in downloaded_files:
-            if (os.path.exists(f)):
-                os.remove(f)
-            if (os.path.exists(f.replace('.gz', ''))):
-                os.remove(f.replace('.gz', ''))
-        print("congratulations, all done")
+        if os.path.exists(save_file_name):
+            for f in downloaded_files:
+                if (os.path.exists(f)):
+                    os.remove(f)
+                if (os.path.exists(f.replace('.gz', ''))):
+                        os.remove(f.replace('.gz', ''))
+            print("congratulations, all done")
+        else:
+            print("teqc is not working, please check teqc environment")
         
     else:
         print("no valid data found")
